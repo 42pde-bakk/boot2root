@@ -37,14 +37,27 @@ Use [dirb](https://www.kali.org/tools/dirb/) to find all existing urls on a give
 
 The index page isn't very interesting, and we don't have permission to access /server-status so let's check out the forum.
 The only interesting post here is "Probleme login ?" where a user named lmezard posted an entire logfile, maybe there is something interesting in it?
+
+![Credentials found on forum post](./images/writeup1/credentials_on_forum_post.png)
 `Failed password for invalid user !q\]Ej?*5K5cy*AJ`
+
 
 We can login as lmezard on the forum with this password (USERNAME=lmezard). Now we can see her e-mail on her personal account page.
 Running dirb on the https part of the website also shows that /webmail and /phpmyadmin are available.
 
-We can login on the webmail with her e-mail and password and we see an incoming mail with subject "DB Access", hmmmm..
+We can login on the webmail with her e-mail and password and we see an incoming mail with subject "DB Access", hmmmm...
 
-Login on /phpmyadmin with that information
+![Credentials found in e-mail](./images/writeup1/credentials_in_email.png)
+`root/Fg-'kKXBj87E:aJ$`
+
+Login on /phpmyadmin with these credentials.
 Going to forum_db => mlf2_userdata we can see all the users and their passwords which appear to be hashed.
 mlf stands for [My Little Forum](https://mylittleforum.net/) as we can see at the bottom of the forum page.
 The website links to the source code and we can find [the hash function](https://github.com/ilosuna/mylittleforum/blob/0b35c866aede75c2d224b13b0e09297794f0c233/includes/functions.inc.php#L1735)
+
+(Haven't cracked the password)
+
+<!-- https://www.hackingarticles.in/shell-uploading-web-server-phpmyadmin/ -->
+Creating a backdoor in phpmyadmin:
+![Setting up the backdoor](./images/writeup1/phpmyadmin_backdoor.png)
+![Seeing the backdoor in working](./images/writeup1/backdoor_in_working.png)

@@ -6,7 +6,7 @@ TODO: explain iso mount, squashfs, etc
 
 ### "fun"
 
-```
+```shell
 mkdir /tmp/fundir
 cp fun /tmp/fundir
 cd /tmp/fundir
@@ -20,11 +20,12 @@ gcc fun.c
 ./a.out
 ```
 
-```
+```shell
 MY PASSWORD IS: Iheartpwnage
 Now SHA-256 it and submit
 ```
 
-```
+```shell
 echo -n 'Iheartpwnage' | sha256sum
+330b845f32185747e4f8ca15d40ca59796035c89ea809fb5d30f4da83ecf45a4
 ```

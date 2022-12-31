@@ -206,8 +206,6 @@ Using gdb we can find the values:
 $3 = 253
 (gdb) p node2
 $4 = 725
-(gdb) p nod3
-No symbol "nod3" in current context.
 (gdb) p node3
 $5 = 301
 (gdb) p node4
@@ -240,3 +238,20 @@ But if we create the password(s) by appending all the answers, we get and trying
 `Publicspeakingisveryeasy.126241207207b5249opukma426315`
 `Publicspeakingisveryeasy.126241207207b5249opukmq426315`
 
+There is a bug, so we need to swap 2 characters, namely the 1 and 3 from phase_6.
+https://stackoverflowteams.com/c/42network/questions/664/1628?newreg=f7a2840e4b974ddba305a021633c245b
+
+`Publicspeakingisveryeasy.126241207201b2149opekma426135`
+`Publicspeakingisveryeasy.126241207201b2149opekmq426135`
+`Publicspeakingisveryeasy.126241207201b2149opukma426135`
+`Publicspeakingisveryeasy.126241207201b2149opukmq426135`
+
+`Publicspeakingisveryeasy.126241207202b7559opekma426135`
+`Publicspeakingisveryeasy.126241207202b7559opekmq426135`
+`Publicspeakingisveryeasy.126241207202b7559opukma426135`
+`Publicspeakingisveryeasy.126241207202b7559opukmq426135`
+
+`Publicspeakingisveryeasy.126241207207b5249opekma426135`
+`Publicspeakingisveryeasy.126241207207b5249opekmq426135`
+`Publicspeakingisveryeasy.126241207207b5249opukma426135`
+`Publicspeakingisveryeasy.126241207207b5249opukmq426135`

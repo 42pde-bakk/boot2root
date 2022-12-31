@@ -13,14 +13,14 @@ char array_123[16] = {
 };
 // "isrveawhobpnutfg"
 // python3 -c 'print([chr(x) for x in array_123])'
-int node1; // idk the type
+
+void *node1, *node2, *node3, *node4, *node5, *node6;
 unsigned int n1[8] = { 36, 134525716, 134525704, 0, 0, 0, 0, 0 };
 int num_input_strings = 0;
-// _UNKNOWN force_to_data_0;
 int _CTOR_LIST__ = -1;
 int _ctype_b;
 FILE *infile;
-char byte_804B67F[];
+char *byte_804B67F;
 char input_strings[240];
 char s[1360];
 char scratch[80];
@@ -113,48 +113,48 @@ int phase_3(char *s)
 	char v4;
 	int v5;
 
-	if (sscanf(s, "%d %c %d", &v3, &v4, &v5) <= 2)
+	if (sscanf(s, "%d %c %d", &v3, &v4, &v5) < 3)
 		explode_bomb();
 	result = v3;
 	switch (v3)
 	{
 		case 0:
-			v2 = 113;
+			v2 = 'q';
 			if (v5 != 777)
 				explode_bomb();
 			return result;
 		case 1:
-			v2 = 98;
+			v2 = 'b';
 			if (v5 != 214)
 				explode_bomb();
 			return result;
 		case 2:
-			v2 = 98;
+			v2 = 'b';
 			if (v5 != 755)
 				explode_bomb();
 			return result;
 		case 3:
-			v2 = 107;
+			v2 = 'k';
 			if (v5 != 251)
 				explode_bomb();
 			return result;
 		case 4:
-			v2 = 111;
+			v2 = 'o';
 			if (v5 != 160)
 				explode_bomb();
 			return result;
 		case 5:
-			v2 = 116;
+			v2 = 't';
 			if (v5 != 458)
 				explode_bomb();
 			return result;
 		case 6:
-			v2 = 118;
+			v2 = 'v';
 			if (v5 != 780)
 				explode_bomb();
 			return result;
 		case 7:
-			v2 = 98;
+			v2 = '98';
 			if (v5 != 524)
 				explode_bomb();
 			return result;
@@ -208,55 +208,46 @@ int phase_5(char *a1)
 
 int phase_6(char *s)
 {
-	int i;
-	int j;
-	int k;
-	__uint32_t *v4;
-	int m;
-	int v6;
-	int n;
-	int v8;
-	int v9;
-	int ii;
+	uint32_t *v4;
 	int result;
-	int v12;
 	int v13[6];
 	int v14[6];
 
 	read_six_numbers(s, (int)v14);
-	for (i = 0; i <= 5; ++i) {
+	for (int i = 0; i <= 5; ++i) {
 		if ((unsigned int)(v14[i] - 1) > 5)
 			explode_bomb();
-		for (j = i + 1; j <= 5; ++j) {
+		for (int j = i + 1; j <= 5; ++j) {
 			if (v14[i] == v14[j])
 				explode_bomb();
 		}
 	}
-	for (k = 0; k <= 5; ++k) {
+	for (int k = 0; k <= 5; ++k) {
 		v4 = &node1;
-		for (m = 1; m < v14[k]; ++m)
-			v4 = (__uint32_t *)v4[2];
+		for (int m = 1; m < v14[k]; ++m)
+			v4 = (uint32_t *)v4[2];
 		v13[k] = (int)v4;
 	}
-	v6 = v13[0];
-	v12 = v13[0];
-	for (n = 1; n <= 5; ++n) {
+	int v6 = v13[0];
+	int v12 = v13[0];
+	int v8;
+	for (int n = 1; n <= 5; ++n) {
 		v8 = v13[n];
-		*(__uint32_t *)(v6 + 8) = v8;
+		*(uint32_t *)(v6 + 8) = v8;
 		v6 = v8;
 	}
-	*(__uint32_t *)(v8 + 8) = 0;
-	v9 = v12;
-	for (ii = 0; ii <= 4; ++ii) {
-		result = *(__uint32_t *)v9;
-		if (*(__uint32_t *)v9 < **(__uint32_t **)(v9 + 8))
+	*(uint32_t *)(v8 + 8) = 0;
+	int v9 = v12;
+	for (int ii = 0; ii <= 4; ++ii) {
+		result = *(uint32_t *)v9;
+		if (*(uint32_t *)v9 < **(uint32_t **)(v9 + 8))
 			explode_bomb();
-		v9 = *(__uint32_t *)(v9 + 8);
+		v9 = *(uint32_t *)(v9 + 8);
 	}
 	return result;
 }
 
-int fun7(__uint32_t* *a1, int a2)
+int fun7(uint32_t* *a1, int a2)
 {
 	if (!a1)
 		return -1;
@@ -370,8 +361,7 @@ char *skip()
 	char *v0;
 	char *v1;
 
-	do
-	{
+	do {
 		v0 = fgets((char *)(80 * num_input_strings + 134526592), 80, infile);
 		v1 = v0;
 	} while (v0 && blank_line(v0));

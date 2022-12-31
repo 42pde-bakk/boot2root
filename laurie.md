@@ -242,7 +242,7 @@ There is a bug, so we need to swap 2 characters, namely the 1 and 3 from phase_6
 https://stackoverflowteams.com/c/42network/questions/664/1628?newreg=f7a2840e4b974ddba305a021633c245b
 
 `Publicspeakingisveryeasy.126241207201b2149opekma426135`
-`Publicspeakingisveryeasy.126241207201b2149opekmq426135`
+`Publicspeakingisveryeasy.126241207201b2149opekmq426135` <- works
 `Publicspeakingisveryeasy.126241207201b2149opukma426135`
 `Publicspeakingisveryeasy.126241207201b2149opukmq426135`
 

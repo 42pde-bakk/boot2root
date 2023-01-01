@@ -58,6 +58,7 @@ The website links to the source code and we can find [the hash function](https:/
 (Haven't cracked the password)
 
 <!-- https://www.hackingarticles.in/shell-uploading-web-server-phpmyadmin/ -->
+<!-- https://www.netspi.com/blog/technical/network-penetration-testing/linux-hacking-case-studies-part-3-phpmyadmin/ -->
 Creating a backdoor in phpmyadmin:
 ![Setting up the backdoor](./images/writeup1/phpmyadmin_backdoor.png)
 ![Seeing the backdoor in working](./images/writeup1/backdoor_in_working.png)

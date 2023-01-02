@@ -1,31 +1,86 @@
-# WIP
+# fun + bomb
 
-## Setting up:
+## Summary
 
-TODO: explain iso mount, squashfs, etc
+1. Mount the ISO and explore the files
+2. Solve the "fun" challenge (lmezard)
+3. Solve the "bomb" challenge (laurie)
+4. Solve the "turtle" challenge (thor)
+5. Solve the "exploit_me" challenge (zaz)
 
-### "fun"
 
-```shell
-mkdir /tmp/fundir
-cp fun /tmp/fundir
-cd /tmp/fundir
-tar xvf fun
-cd ft_fun
-mkdir ordered
-find . -type f -name '*.pcap' -exec sh -c 'cp {} ordered/$(grep file {} | cut -c 7-)' \;
-cd ordered
-ls -1 | sort -n | xargs cat | sed -E 's#//file[0-9]+##g' > fun.c
-gcc fun.c
-./a.out
+### Mounting the ISO and exploring the files
+
+We have an ISO file, we can't modify it but we can read it.  
+First, we will mount the ISO file:
+```
+udisksctl loop-setup -f ~/Downloads/BornToSecHackMe-v1.1.iso
+```
+And then open the squashfs, which is basically an archive of the files:
+```
+unsquashfs -d /tmp/b2r-sqfs /media/aguiot--/BornToSec/casper/filesystem.squashfs
+cd /tmp/b2r-sqfs
 ```
 
-```shell
-MY PASSWORD IS: Iheartpwnage
-Now SHA-256 it and submit
+There is a lot of homes for multiple users, with some interesting files.
+```
+aguiot--@e1r1p6:/tmp/b2r-sqfs$ tree -FC ./home
+./home/
+├── ft_root/
+│   ├── Desktop/
+│   └── mail/
+│       ├── INBOX.Drafts*
+│       ├── INBOX.Sent*
+│       └── INBOX.Trash*
+├── laurie/
+│   ├── bomb*
+│   └── README*
+├── laurie@borntosec.net/
+│   └── mail/
+│       ├── INBOX.Drafts*
+│       ├── INBOX.Sent*
+│       └── INBOX.Trash*
+├── lmezard/
+│   ├── fun*
+│   └── README*
+├── LOOKATME/
+│   └── password*
+├── thor/
+│   ├── README*
+│   └── turtle*
+└── zaz/
+    ├── exploit_me*
+    └── mail/
+        ├── INBOX.Drafts*
+        ├── INBOX.Sent*
+        └── INBOX.Trash*
+
+11 directories, 17 files
 ```
 
-```shell
-echo -n 'Iheartpwnage' | sha256sum
-330b845f32185747e4f8ca15d40ca59796035c89ea809fb5d30f4da83ecf45a4
-```
+
+### LOOKATME
+
+In the `LOOKATME` folder, we have a `password` file. It gives the password of the `lmezard` user. We can use it to login on the VM TTY, and also FTP (found via nmap).  
+
+![tty login](./images/writeup2.tty.png)
+
+
+### lmezard (fun)
+
+Check the [laurie folder](./thor/) in this repository.
+
+
+### laurie (bomb)
+
+Check the [laurie folder](./thor/) in this repository.
+
+
+### thor (turtle)
+
+Check the [thor folder](./thor/) in this repository.
+
+
+### zaz (exploit_me)
+
+Check the [zaz folder](./thor/) in this repository.

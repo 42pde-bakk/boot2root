@@ -2,7 +2,7 @@
 
 This first exploit is simple. We will boot the VM and interrupt the boot sequence to get a bootloader menu or prompt. Usually there is a GRUB menu, in this VM we can only get the prompt.  
 It's a known method, often used to reset a lost root password, or get access to a computer without knowing the password. Physical access => Vulnerable.  
-The only way to protect from physical attacks is to crypt the disk/partitions, which is not the case here.  
+The only way to protect from physical attacks is to encrypt the disk/partitions, which is not the case here.  
 
 The process is simple: Boot the VM, and while booting, press the `Shift` key. If we had a GRUB menu, we would have pressed `e` (for Edit).
 We get a `boot: ` prompt:

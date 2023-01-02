@@ -66,7 +66,7 @@ In the `LOOKATME` folder, we have a `password` file. It gives the password of th
 lmezard:G!@M6f4Eatau{sF"
 ```
 
-![tty login](./images/writeup2.tty.png)
+![tty login](./images/writeup2/tty.png)
 
 
 ### lmezard (fun)

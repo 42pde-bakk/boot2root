@@ -7,7 +7,7 @@ The only way to protect from physical attacks is to crypt the disk/partitions, w
 The process is simple: Boot the VM, and while booting, press the `Shift` key. If we had a GRUB menu, we would have pressed `e` (for Edit).
 We get a `boot: ` prompt:
 
-![tty login](./images/writeup2.tty.png)
+![boot prompt](./images/writeup3/boot.png)
 
 We can use the `live` command to boot on the live image (default one). We can add some parameters, like when editing Kernel Parameters in GRUB menu.  
 The classical parameters are `rw` for read-write and `init=/bin/bash` to start a shell, as root.  

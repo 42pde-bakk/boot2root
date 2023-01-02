@@ -1,7 +1,14 @@
 ### lmezard (fun)
 
-Check the [laurie folder](./thor/) in this repository.
+In this first challenge, we have a file named `fun`. Running the command `file fun` says that it's a tar archive. We can open it with `tar xvf fun`.  
+We then have a lot of `.pcap` files. This should be some PacketCapture files from Wireshark or tcpdump etc, but with `file x.pcap` we can see it's actually text files. Here is an example of the content:
+```
+aguiot--@e1r1p6:/tmp$ cat ft_fun/DFO1G.pcap 
+	printf("Hahahaha Got you!!!\n");
 
+//file19
+```
+Each file has some mangled C code, with a commented file numbed. Here is a little script to re-arrange it:
 
 ```shell
 mkdir /tmp/fundir
@@ -16,7 +23,7 @@ ls -1 | sort -n | xargs cat | sed -E 's#//file[0-9]+##g' > fun.c
 gcc fun.c
 ./a.out
 ```
-
+Which gives us this:
 ```shell
 MY PASSWORD IS: Iheartpwnage
 Now SHA-256 it and submit

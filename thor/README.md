@@ -10,3 +10,5 @@ Using Message Digest (md5) we get the ssh key for zaz
 thor@BornToSecHackMe:~$ echo -n "SLASH" | md5sum
 646da671ca01bb5d84dbb5fb2238dc8e  -
 ```
+
+[[Go to next challenge (zaz)](../zaz/)] | [[Go back to writeup2.md](../writeup2.md)]]

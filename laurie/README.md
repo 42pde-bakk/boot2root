@@ -298,3 +298,5 @@ https://stackoverflowteams.com/c/42network/questions/664/1628?newreg=f7a2840e4b9
 `Publicspeakingisveryeasy.126241207207b5249opekmq426135`
 `Publicspeakingisveryeasy.126241207207b5249opukma426135`
 `Publicspeakingisveryeasy.126241207207b5249opukmq426135`
+
+[[Go to next challenge (thor)](../thor/)] | [[Go back to writeup2.md](../writeup2.md)]]

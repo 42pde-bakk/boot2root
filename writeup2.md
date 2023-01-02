@@ -62,6 +62,9 @@ aguiot--@e1r1p6:/tmp/b2r-sqfs$ tree -FC ./home
 ### LOOKATME
 
 In the `LOOKATME` folder, we have a `password` file. It gives the password of the `lmezard` user. We can use it to login on the VM TTY, and also FTP (found via nmap).  
+```
+lmezard:G!@M6f4Eatau{sF"
+```
 
 ![tty login](./images/writeup2.tty.png)
 

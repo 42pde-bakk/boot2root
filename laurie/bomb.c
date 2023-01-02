@@ -154,7 +154,7 @@ int phase_3(char *s)
 				explode_bomb();
 			return result;
 		case 7:
-			v2 = '98';
+			v2 = 'b';
 			if (v5 != 524)
 				explode_bomb();
 			return result;
@@ -247,7 +247,7 @@ int phase_6(char *s)
 	return result;
 }
 
-int fun7(uint32_t* *a1, int a2)
+int fun7(uint32_t** a1, int a2)
 {
 	if (!a1)
 		return -1;

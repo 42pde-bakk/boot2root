@@ -136,6 +136,7 @@ int phase_4(char *s) {
 }
 ```
 There is a recursive function (func4) which returns 1 if (a <= 1), or otherwise `func4(arg - 1) + func4(arg - 2)`.
+Fibonacci in C
 
 We need to provide a 1-digit above-zero integer whose result is 55.
 `func4(0) => 1`
@@ -197,6 +198,48 @@ So we have multiple possibilities
 `opukma`
 `opukmq`
 ### Phase 6
+
+```c
+int phase_6(char *s) {
+	uint32_t *v4;
+	int result;
+	int v13[6];
+	int v14[6];
+
+	read_six_numbers(s, (int)v14);
+	for (int i = 0; i <= 5; ++i) {
+		if ((unsigned int)(v14[i] - 1) > 5)
+			explode_bomb();
+		for (int j = i + 1; j <= 5; ++j) {
+			if (v14[i] == v14[j])
+				explode_bomb();
+		}
+	}
+	for (int k = 0; k <= 5; ++k) {
+		v4 = &node1;
+		for (int m = 1; m < v14[k]; ++m)
+			v4 = (uint32_t *)v4[2];
+		v13[k] = (int)v4;
+	}
+	int v6 = v13[0];
+	int v12 = v13[0];
+	int v8;
+	for (int n = 1; n <= 5; ++n) {
+		v8 = v13[n];
+		*(uint32_t *)(v6 + 8) = v8;
+		v6 = v8;
+	}
+	*(uint32_t *)(v8 + 8) = 0;
+	int v9 = v12;
+	for (int ii = 0; ii <= 4; ++ii) {
+		result = *(uint32_t *)v9;
+		if (*(uint32_t *)v9 < **(uint32_t **)(v9 + 8))
+			explode_bomb();
+		v9 = *(uint32_t *)(v9 + 8);
+	}
+	return result;
+}
+```
 
 We need to provide 6 numbers which all have to be between 1 and 6 and without duplicates.
 Phase_6 uses these ints as index of an array and checks whether the items in the array are sorted in descending order (`if (*v9 < **(v9 + 8)) explode_bomb();`). The bomb blows up if this is not the case

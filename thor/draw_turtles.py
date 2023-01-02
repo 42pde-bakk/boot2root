@@ -15,7 +15,7 @@ def let_turtle_draw(lines: list[str]) -> None:
 	x = 0
 	barry.goto(x, 0)
 	barry.setheading(90)
-	barry.speed(10)
+	barry.speed(1)
 
 	for line in lines:
 		if not line:
@@ -42,7 +42,7 @@ if __name__ == '__main__':
 	if len(sys.argv) != 2:
 		error()
 	try:
-		with open('turtle.txt') as f:
+		with open(sys.argv[1], 'r') as f:
 			instructions = f.read().splitlines()
 	except FileNotFoundError:
 		error()

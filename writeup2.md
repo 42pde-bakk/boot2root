@@ -71,12 +71,12 @@ lmezard:G!@M6f4Eatau{sF"
 
 ### lmezard (fun)
 
-Check the [laurie folder](./thor/) in this repository.
+Check the [lmezard folder](./lmezard/) in this repository.
 
 
 ### laurie (bomb)
 
-Check the [laurie folder](./thor/) in this repository.
+Check the [laurie folder](./laurie/) in this repository.
 
 
 ### thor (turtle)
@@ -86,4 +86,4 @@ Check the [thor folder](./thor/) in this repository.
 
 ### zaz (exploit_me)
 
-Check the [zaz folder](./thor/) in this repository.
+Check the [zaz folder](./zaz/) in this repository.

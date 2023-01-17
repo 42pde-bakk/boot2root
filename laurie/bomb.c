@@ -265,7 +265,7 @@ void secret_phase()
 
 	line = (const char *)read_line();
 	v1 = __strtol_internal(line, 0, 10, 0);
-	if ((unsigned int)(v1 - 1) > 0x3E8)
+	if ((unsigned int)(v1 - 1) > 1000)
 		explode_bomb();
 	if (fun7(n1, v1) != 7)
 		explode_bomb();

